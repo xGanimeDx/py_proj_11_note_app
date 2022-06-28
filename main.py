@@ -1,10 +1,10 @@
 import json
 import uuid
-from datetime import date
+from datetime import date, datetime
 from tkinter import *
 
 def save_to_json(message):
-    data = {'id': str(uuid.uuid4()), 'message': message, 'time': date.today()}
+    data = {'id': str(uuid.uuid4()), 'message': message, 'time': str(date.today()) + " " + str(datetime.now().strftime("%H:%M:%S"))}
     with open('notes.json', 'r+', encoding='utf-8') as file:
         file_data = json.load(file)
         file_data['notes'].append(data)
